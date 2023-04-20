@@ -28,6 +28,7 @@ The project is built using Spring, React frameworks, and MySQL.
 - MySQL/AWS
 - React
 - TailWind
+- JUnit
 
 ## Installation
 
