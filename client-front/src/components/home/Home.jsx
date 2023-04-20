@@ -9,7 +9,7 @@ function Home() {
     <>
       <div className="flex-wrap h-screen w-screen center center flex-col">
         <Videoshow />
-        <div className="flex-wrap h-auto w-screen grow flex-row bg-gray-700">
+        <div className="flex-wrap h-auto w-screen grow flex-row">
           <div className="flex-wrap w-32 break-all">
             <Navbar />
           </div>

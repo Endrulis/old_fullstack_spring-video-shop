@@ -1,7 +1,13 @@
 import { Form, Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 
-function OrderForm({ orderDescription, handleInputChange, handleCreateOrder }) {
+function OrderForm({
+  orderDescription,
+  handleInputChange,
+  handleCreateOrder,
+  indicationBulb,
+  setIndicationBulb,
+}) {
   const createBtnDisabled = orderDescription.trim() === "";
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -27,7 +33,7 @@ function OrderForm({ orderDescription, handleInputChange, handleCreateOrder }) {
             name="orderDescription"
             id="orderDescription"
             placeholder="Type here"
-            className=" border-blue-500 border bg-gray-700 rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+            className=" border-blue-500 border bg-[#060f25] rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
             maxLength={2000}
             value={orderDescription}
             onChange={(e) =>
@@ -38,6 +44,16 @@ function OrderForm({ orderDescription, handleInputChange, handleCreateOrder }) {
             }
             rows={5}
           />
+          <select
+            className="text-gray-200 bg-[#060f25] text-sm appearance-none border rounded w-full py-2 px-3 mb-4 mt-4 leading-tight focus:outline-none focus:shadow-outline"
+            value={indicationBulb}
+            onChange={(event) => setIndicationBulb(event.target.value)}
+            id="indicationBulb"
+          >
+            <option value="OPEN">OPEN</option>
+            <option value="ONGOING">ONGOING</option>
+            <option value="FINISHED">FINISHED</option>
+          </select>
         </Form.Group>
         <div className="flex justify-end">
           <Button

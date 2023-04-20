@@ -33,6 +33,7 @@ public class OrderServiceImpl implements OrderService{
     public void updateOrderFromRequest( UpdateOrderRequest updateOrderRequest, Order order ) {
         if (updateOrderRequest.getDescription() != null) {
             order.setDescription(updateOrderRequest.getDescription());
+            order.setIndicationBulb(updateOrderRequest.getIndicationBulb());
         }
     }
 

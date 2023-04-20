@@ -13,7 +13,7 @@ import Camera11 from "../../assets/Camera11.jpg";
 function Navbar() {
   const authProv = new AuthProvider();
   return (
-    <nav className="fixed left-0 h-full w-auto flex flex-col items-center bg-gradient-to-b from-gray-900 via-sky-900 to-yellow-300">
+    <nav className="fixed left-0 h-full w-auto flex flex-col items-center bg-gradient-to-b from-gray-900 via-sky-700 to-amber-100">
       <div className="mt-4 ml-4">
         <img src={WhiteMoon} alt="Moon Logo" className="h-16 w-16" />
       </div>

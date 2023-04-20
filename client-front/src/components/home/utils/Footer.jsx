@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <footer
-      className="text-gray-300 z-10 hidden sm:block fixed bottom-0 w-full cursor-pointer px-8"
+      className="text-gray-300 z-10 hidden md:block fixed bottom-0 w-full cursor-pointer px-8"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div

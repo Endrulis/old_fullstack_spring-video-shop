@@ -46,7 +46,7 @@ function UserOrdersList() {
 
   return (
     <>
-      <div className="flex h-auto w-screen grow flex-row bg-gray-700">
+      <div className="flex h-auto w-screen grow flex-row">
         <div className="fixed left-0 h-full w-auto flex flex-col items-center">
           <Navbar />
         </div>

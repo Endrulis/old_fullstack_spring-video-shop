@@ -73,7 +73,7 @@ public class OrderControllerTest {
         MyUser user = new MyUser("testuser@example.com", "Test User", "testpassword");
         order.setUser(user);
         List<Order> orders = Collections.singletonList(order);
-        OrderDto orderDto = new OrderDto(order.getId(), order.getDescription(), order.getCreatedAt(),
+        OrderDto orderDto = new OrderDto(order.getId(), order.getIndicationBulb(), order.getDescription(), order.getCreatedAt(),
                 new OrderDto.UserDto(user.getEmail(), user.getFullName()));
         when(orderService.getOrders()).thenReturn(orders);
         when(orderMapper.toOrderDto(order)).thenReturn(orderDto);
@@ -96,9 +96,9 @@ public class OrderControllerTest {
         CreateOrderRequest createOrderRequest = new CreateOrderRequest("description");
         String email = "test@example.com";
         MyUser user = new MyUser(email, "password");
-        Order order = new Order("id", "description", ZonedDateTime.now(), user);
+        Order order = new Order("id","indicationBulb", "description", ZonedDateTime.now(), user);
         OrderDto.UserDto userDto = new OrderDto.UserDto(email, "");
-        OrderDto orderDto = new OrderDto("id", "description", ZonedDateTime.now(), userDto);
+        OrderDto orderDto = new OrderDto("id","indicationBulb", "description", ZonedDateTime.now(), userDto);
         when(currentUser.getUsername()).thenReturn(email);
         when(userService.getUserByEmail(email)).thenReturn(user);
         when(orderMapper.toOrder(createOrderRequest)).thenReturn(order);
@@ -121,10 +121,11 @@ public class OrderControllerTest {
     void testUpdateOrder() {
         UUID orderId = UUID.randomUUID();
         String newDescription = "new description";
+        String indicationBulb = "ONGOING";
         UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest(newDescription);
-        Order order = new Order(orderId.toString(), "description", ZonedDateTime.now(), null);
-        Order updatedOrder = new Order(orderId.toString(), newDescription, ZonedDateTime.now(), null);
-        OrderDto orderDto = new OrderDto(orderId.toString(), newDescription, ZonedDateTime.now(), null);
+        Order order = new Order(orderId.toString(),indicationBulb, "description", ZonedDateTime.now(), null);
+        Order updatedOrder = new Order(orderId.toString(), indicationBulb, newDescription, ZonedDateTime.now(), null);
+        OrderDto orderDto = new OrderDto(orderId.toString(), indicationBulb, newDescription, ZonedDateTime.now(), null);
 
         when(orderService.validateAndGetOrder(orderId.toString())).thenReturn(order);
         doNothing().when(orderService).updateOrderFromRequest(updateOrderRequest, order);
@@ -145,10 +146,10 @@ public class OrderControllerTest {
     void deleteOrder_shouldReturnDeletedOrderDto() {
         // Given
         UUID orderId = UUID.randomUUID();
-        Order order = new Order("123", "Old description", ZonedDateTime.now(), null);
+        Order order = new Order("123","ONGOING", "Old description", ZonedDateTime.now(), null);
         when(orderService.validateAndGetOrder(orderId.toString())).thenReturn(order);
         doNothing().when(orderService).deleteOrder(order);
-        OrderDto expectedOrderDto = new OrderDto(orderId.toString(), "Old description", ZonedDateTime.now(), null);
+        OrderDto expectedOrderDto = new OrderDto(orderId.toString(),"FINISHED", "Old description", ZonedDateTime.now(), null);
         when(orderMapper.toOrderDto(order)).thenReturn(expectedOrderDto);
 
         // When

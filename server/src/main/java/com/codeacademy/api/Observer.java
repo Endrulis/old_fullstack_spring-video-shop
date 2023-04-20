@@ -48,18 +48,27 @@ public class Observer implements CommandLineRunner {
         }
         if(orders.isEmpty()){
             MyUser user = userRepository.findByEmail("peter@gmail.com");
+            MyUser user2 = userRepository.findByEmail("john@gmail.com");
             Order order1 = new Order();
             order1.setId(UUID.randomUUID().toString());
+            order1.setIndicationBulb("OPEN");
             order1.setDescription("This is one of simple orders request");
             order1.getCreatedAt();
             order1.setUser(user);
             orderRepository.save(order1);
+            order1.setId(UUID.randomUUID().toString());
+            order1.setUser(user2);
+            orderRepository.save(order1);
 
             Order order2 = new Order();
             order2.setId(UUID.randomUUID().toString());
+            order2.setIndicationBulb("ONGOING");
             order2.setDescription("This is another one order seeded");
             order2.getCreatedAt();
             order2.setUser(user);
+            orderRepository.save(order2);
+            order2.setId(UUID.randomUUID().toString());
+            order2.setUser(user2);
             orderRepository.save(order2);
         }
     }

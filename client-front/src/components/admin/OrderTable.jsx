@@ -11,8 +11,11 @@ import {
   AiOutlineFolderAdd,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { WiMoonAltWaxingCrescent5 } from "react-icons/wi";
 
 function OrderTable({
+  indicationBulb,
+  setIndicationBulb,
   orders,
   orderDescription,
   orderTextSearch,
@@ -23,6 +26,25 @@ function OrderTable({
   handleSearchOrder,
   handleUpdateOrder,
 }) {
+  const renderIndicationBulb = (order) => {
+    if (order.indicationBulb === "OPEN") {
+      return <WiMoonAltWaxingCrescent5 className="text-gray-200" title="NEW" />;
+    } else if (order.indicationBulb === "ONGOING") {
+      return (
+        <WiMoonAltWaxingCrescent5
+          className="text-amber-500"
+          title="IN PROCESS"
+        />
+      );
+    } else if (order.indicationBulb === "FINISHED") {
+      return (
+        <WiMoonAltWaxingCrescent5 className="text-lime-500" title="DONE" />
+      );
+    } else {
+      return null;
+    }
+  };
+
   const [showForm, setShowForm] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
@@ -64,14 +86,15 @@ function OrderTable({
           <Table.Cell>{order.user.email}</Table.Cell>
           <Table.Cell className="hover:cursor-pointer">{createdAt}</Table.Cell>
           <Table.Cell>{order.description}</Table.Cell>
+          <Table.Cell>{renderIndicationBulb(order)}</Table.Cell>
           <Table.Cell>
-            <Link
-              onClick={() => {
-                setSelectedOrder(order);
-              }}
-              className="text-gray-200 text-center py-3 hover:text-blue-500 hover:scale-95 transition px-6 cursor-pointer"
-            >
-              <AiOutlineEdit className="inline-block mr-2" />
+            <Link className="text-gray-200 text-center py-3 hover:text-blue-500 hover:scale-95 transition px-6 cursor-pointer">
+              <AiOutlineEdit
+                className="inline-block mr-2"
+                onClick={() => {
+                  setSelectedOrder(order);
+                }}
+              />
             </Link>
             {isSelected && (
               <OrderEditModal
@@ -82,11 +105,11 @@ function OrderTable({
                 handleUpdateOrder={handleUpdateOrder}
               />
             )}
-            <Link
-              className="text-gray-200 text-center py-3 hover:text-blue-500 hover:scale-95 transition px-6 cursor-pointer"
-              onClick={() => handleDeleteOrder(order.id)}
-            >
-              <AiOutlineDelete className="inline-block mr-2" />
+            <Link className="text-gray-200 text-center py-3 hover:text-blue-500 hover:scale-95 transition px-6 cursor-pointer">
+              <AiOutlineDelete
+                className="inline-block mr-2"
+                onClick={() => handleDeleteOrder(order.id)}
+              />
             </Link>
           </Table.Cell>
         </Table.Row>
@@ -100,7 +123,7 @@ function OrderTable({
         <h1 className="md:text-3xl sm:text-xl py-10 font-bold lg:mb-6">
           Order List
         </h1>
-        <p className="lg:mb-6 xs:text-xs sm:text-sm md:text-sm lg:text-base">
+        <p className="lg:mb-6 xs:text-xs sm:text-sm md:text-sm lg:text-base text-gray-500">
           Here's a list of all orders that are registered in Moon website.
         </p>
         <NavLink to="/user" className="text-blue-200 hover:text-blue-500">
@@ -131,6 +154,8 @@ function OrderTable({
             orderDescription={orderDescription}
             handleInputChange={handleInputChange}
             handleCreateOrder={handleCreateOrder}
+            indicationBulb={indicationBulb}
+            setIndicationBulb={setIndicationBulb}
           />
         )}
       </div>
@@ -141,7 +166,7 @@ function OrderTable({
               type="text"
               placeholder="Search Order by Id"
               maxLength={100}
-              className="border rounded py-2 px-3 text-gray-200 bg-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="border rounded py-2 px-3 text-gray-200 bg-[#060f25] text-sm leading-tight focus:outline-none focus:shadow-outline"
               value={orderTextSearch}
               onChange={(e) =>
                 handleInputChange(e, {
@@ -179,6 +204,7 @@ function OrderTable({
               <Table.HeaderCell className="text-left">
                 Description
               </Table.HeaderCell>
+              <Table.HeaderCell className="text-left">Status</Table.HeaderCell>
               <Table.HeaderCell className="text-left"></Table.HeaderCell>
             </Table.Row>
           </Table.Header>

@@ -85,11 +85,11 @@ const Navbar = () => {
       <ul
         className={`${
           isMenuOpen ? "block" : "hidden md:block"
-        } text-gray-100 text-start text-sm cursor-pointer`}
+        } text-gray-100 text-start text-sm cursor-pointer ease-in-out duration-300`}
         onMouseLeave={() => setIsMenuOpen(false)}
       >
         <li
-          className="text-start py-3 hover:text-blue-200 hover:scale-95 transition"
+          className="text-start py-3 hover:text-blue-200 hover:scale-95"
           onClick={handleAboutMoonModalHover}
         >
           About Moon

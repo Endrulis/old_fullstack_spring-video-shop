@@ -108,13 +108,13 @@ function EditUserForm() {
   return (
     <>
       {!oldPasswordConfirmed ? (
-        <div className="flex h-screen bg-gray-700">
+        <div className="flex h-screen body">
           <img
             src={Camera10}
             className="lg:w-1/2 md:w-0 bg-cover bg-center"
             alt=""
           />
-          <div className="flex ml-auto mb-auto mr-auto mt-auto bg-gray-700">
+          <div className="flex ml-auto mb-auto mr-auto mt-auto body">
             <form className="place-content-center">
               <div>
                 <label className="block text-gray-200 mb-2 font-bold text-xl ">
@@ -128,7 +128,7 @@ function EditUserForm() {
                   Enter current password:
                 </label>
                 <input
-                  className="bg-gray-700 w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                  className="bg-[#060f25] w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                   disabled={oldPasswordConfirmed}
                   type="password"
                   placeholder="Password"
@@ -164,13 +164,13 @@ function EditUserForm() {
           </div>
         </div>
       ) : (
-        <div className="flex h-screen bg-gray-700 text-gray-200">
+        <div className="flex h-screen body text-gray-200">
           <img
             src={Camera10}
             className="lg:w-1/2 md:w-0 responsive bg-cover bg-center"
             alt=""
           />
-          <div className="flex ml-auto mb-auto mr-auto mt-auto bg-gray-700">
+          <div className="flex ml-auto mb-auto mr-auto mt-auto body">
             <form className="place-content-center" onSubmit={handleSubmit}>
               <label className="block text-gray-200 mb-2">
                 Edit your credentials to renew your profile information.
@@ -179,7 +179,7 @@ function EditUserForm() {
               <br></br>
               <label className="block text-gray-200 mb-2">Full name</label>
               <input
-                className="bg-gray-700 w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                className="bg-[#060f25] w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
                 value={fullName}
                 onChange={(event) => setFullName(event.target.value)}
@@ -191,7 +191,7 @@ function EditUserForm() {
 
               <label className="block text-gray-200 mb-2">Email address</label>
               <input
-                className="bg-gray-700 w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                className="bg-[#060f25] w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                 type="email"
                 autoComplete="username"
                 value={email}
@@ -204,7 +204,7 @@ function EditUserForm() {
 
               <label className="block text-gray-200 mb-2">New password</label>
               <input
-                className="bg-gray-700 w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                className="bg-[#060f25] w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                 type="password"
                 autoComplete="new-password"
                 placeholder="<Optional>"
@@ -222,7 +222,7 @@ function EditUserForm() {
                     Confirm new password
                   </label>
                   <input
-                    className="bg-gray-700 w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-[#060f25] w-full shadow appearance-none text-sm border rounded py-2 px-3 mb-4 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                     type="password"
                     autoComplete="new-password"
                     value={confirmNewPassword}

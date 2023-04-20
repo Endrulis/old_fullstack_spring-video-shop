@@ -13,7 +13,10 @@ public class OrderMapperImpl implements OrderMapper {
         if (createOrderRequest == null) {
             return null;
         }
-        return new Order(createOrderRequest.getDescription());
+        Order order = new Order();
+        order.setIndicationBulb(createOrderRequest.getIndicationBulb());
+        order.setDescription(createOrderRequest.getDescription());
+        return order;
     }
 
     @Override
@@ -22,6 +25,6 @@ public class OrderMapperImpl implements OrderMapper {
             return null;
         }
         OrderDto.UserDto userDto = new OrderDto.UserDto(order.getUser().getEmail(), order.getUser().getFullName());
-        return new OrderDto(order.getId(), order.getDescription(), order.getCreatedAt(), userDto);
+        return new OrderDto(order.getId(), order.getIndicationBulb(), order.getDescription(), order.getCreatedAt(), userDto);
     }
 }

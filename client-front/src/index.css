@@ -13,9 +13,18 @@
   }
 }
 
+body {
+  background-color: #060f25;
+}
+
 pre {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .cursor-pointer {
   cursor: pointer !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }

@@ -85,12 +85,12 @@ function UserTable({
   }
 
   return (
-    <div className="bg-gray-700 top-0 h-screen w-screen min-h-full ">
+    <div className="top-0 h-screen w-screen min-h-full ">
       <div className="top-0 md:ml-24 sm:ml-24 lg:ml-28 xl:ml-28 justify-center text-gray-200">
         <h1 className="md:text-3xl sm:text-xl py-10 font-bold lg:mb-6">
           User List
         </h1>
-        <p className="lg:mb-6 xs:text-xs sm:text-sm md:text-sm lg:text-base">
+        <p className="lg:mb-6 xs:text-xs sm:text-sm md:text-sm lg:text-base text-gray-500">
           Here's a list of all active users that are registered in Moon website.
         </p>
         <NavLink to="/user" className="text-blue-200 hover:text-blue-500">
@@ -130,7 +130,7 @@ function UserTable({
               placeholder="Search by Email"
               maxLength={100}
               aria-label="Search by Email"
-              className="bg-gray-700 border rounded py-2 px-3 text-gray-200 text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-[#060f25] border rounded py-2 px-3 text-gray-200 text-sm leading-tight focus:outline-none focus:shadow-outline"
               value={userUsernameSearch}
               onChange={(e) =>
                 handleInputChange(e, {
@@ -167,9 +167,6 @@ function UserTable({
           </Table.Header>
           <Table.Body>{userList}</Table.Body>
         </Table>
-      </div>
-      <div className="flex text-gray-200 justify-center w-screen items-center fixed bottom-0 py-4 h-1/8">
-        <p className="text-xs">© 2023 Moon Company. All rights reserved.</p>
       </div>
     </div>
   );

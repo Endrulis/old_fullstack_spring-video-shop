@@ -92,7 +92,7 @@ const CreateUserForm = () => {
         className="absolute w-screen h-screen bg-cover bg-no-repeat"
         style={{ backgroundImage: `url(${Camera14})` }}
       ></div>
-      <div className="max-w-md w-full bg-gray-700 shadow-md rounded-lg py-8 px-8 z-10">
+      <div className="max-w-md w-full bg-[#060f25] shadow-md rounded-lg py-8 px-8 z-10">
         <div className="flex-wrap justify-start mb-4 ">
           <NavLink to="/admin" className="text-blue-200 hover:text-blue-500">
             <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
@@ -111,7 +111,7 @@ const CreateUserForm = () => {
               Email address
             </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               name="email"
@@ -133,7 +133,7 @@ const CreateUserForm = () => {
               Full name
             </label>
             <input
-              className="appearance-none border rounded w-full text-sm py-2 px-3 bg-gray-700 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded w-full text-sm py-2 px-3 bg-[#060f25] text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="fullName"
               placeholder="Full name"
               type="text"
@@ -154,7 +154,7 @@ const CreateUserForm = () => {
               Temporary password for user
             </label>
             <input
-              className="appearance-none text-sm border rounded w-full bg-gray-700 py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none text-sm border rounded w-full bg-[#060f25] py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               name="password"
@@ -176,7 +176,7 @@ const CreateUserForm = () => {
               Role
             </label>
             <select
-              className="appearance-none text-sm border rounded w-full bg-gray-700 py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none text-sm border rounded w-full bg-[#060f25] py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="role"
               name="role"
               value={user.role}

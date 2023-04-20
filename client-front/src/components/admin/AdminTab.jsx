@@ -15,6 +15,8 @@ import Camera11 from "../../assets/Camera11.jpg";
 const AdminTab = (props) => {
   const { handleInputChange } = props;
   const {
+    indicationBulb,
+    setIndicationBulb,
     isUsersLoading,
     users,
     userUsernameSearch,
@@ -41,8 +43,8 @@ const AdminTab = (props) => {
 
   return (
     <>
-      <div className="flex-wrap h-screen top-0 w-screen grow flex-row bg-gray-700">
-        <nav className="fixed left-0 top-0 h-screen w-auto flex flex-col items-center bg-gradient-to-b from-gray-900 via-sky-900 to-yellow-300">
+      <div className="flex-wrap h-screen top-0 w-screen grow flex-row">
+        <nav className="fixed left-0 top-0 h-screen w-auto flex flex-col items-center bg-gradient-to-b from-gray-900 via-sky-700 to-amber-100">
           <img
             src={WhiteMoon}
             alt="Moon Logo"
@@ -104,7 +106,7 @@ const AdminTab = (props) => {
         </nav>
 
         {activeTab === "users" && (
-          <div className=" border-gray-200 sm:rounded-lg py-10 bg-gray-700">
+          <div className=" border-gray-200 sm:rounded-lg py-10">
             {isUsersLoading && <div>Loading users...</div>}
             <UserTable
               users={users}
@@ -116,9 +118,11 @@ const AdminTab = (props) => {
           </div>
         )}
         {activeTab === "orders" && (
-          <div className=" border-gray-200 sm:rounded-lg py-10 bg-gray-700">
+          <div className=" border-gray-200 sm:rounded-lg py-10 h-full body w-screen">
             {isOrdersLoading && <div>Loading orders...</div>}
             <OrderTable
+              indicationBulb={indicationBulb}
+              setIndicationBulb={setIndicationBulb}
               orders={orders}
               handleGetOrders={handleGetOrders}
               orderDescription={orderDescription}
@@ -131,7 +135,7 @@ const AdminTab = (props) => {
             />
           </div>
         )}
-        <div className="flex bg-gray-700 text-gray-200 justify-center w-screen items-center bottom-0 py-4 h-1/8">
+        <div className="flex text-gray-200 justify-center w-screen items-center bottom-0 py-4 h-1/8">
           <p className="text-xs">© 2023 Moon Company. All rights reserved.</p>
         </div>
       </div>

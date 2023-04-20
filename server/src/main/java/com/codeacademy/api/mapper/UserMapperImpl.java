@@ -24,6 +24,6 @@ public class UserMapperImpl implements UserMapper {
         if (order == null) {
             return null;
         }
-        return new UserWithoutPasswordDto.OrderDto(order.getId(), order.getDescription(), order.getCreatedAt());
+        return new UserWithoutPasswordDto.OrderDto(order.getId(), order.getIndicationBulb(), order.getDescription(), order.getCreatedAt());
     }
 }

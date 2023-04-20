@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Input } from "semantic-ui-react";
+import { Modal, Button } from "semantic-ui-react";
 import { AuthProvider } from "../auth/AuthContext";
 import { config } from "../../Constants.js";
 import axios from "axios";
@@ -11,23 +11,30 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function OrderEditModal({ order, open, setOpen, handleGetOrders }) {
   const [updatedOrder, setUpdatedOrder] = useState(order);
   const [description, setDescription] = useState(order.description);
+  const [indicationBulb, setIndicationBulb] = useState(order.indicationBulb);
   const [orderId] = useState(order.id);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUpdatedOrder({ ...updatedOrder, [name]: value });
+    setUpdatedOrder({
+      ...updatedOrder,
+      [name]: value,
+      description: value,
+      indicationBulb,
+    }); // update updatedOrder state
     setDescription(value);
   };
-
   const handleUpdateClick = async (event) => {
     event.preventDefault();
     const authProv = new AuthProvider();
+    const updatedOrderData = {
+      indicationBulb,
+      description,
+    };
     await axios
       .put(
         `${config.url.API_BASE_URL}/api/v1/orders/${orderId}`,
-        {
-          description,
-        },
+        updatedOrderData,
         {
           headers: { Authorization: orderApi.bearerAuth(authProv.getUser()) },
         }
@@ -48,39 +55,64 @@ function OrderEditModal({ order, open, setOpen, handleGetOrders }) {
 
   return (
     <Modal open={open} onClose={handleCancelClick}>
-      <div className="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-50">
-        <div className="relative mt-16 p-4 h-3/5 w-2/5 bg-white rounded-lg">
-          <Modal.Content className="flex justify-center items-center">
-            <div className="flex flex-col ">
-              <div className="flex jusitify-center mb-4">
-                <NavLink
-                  to="/admin"
-                  onClick={handleCancelClick}
-                  className="text-blue-800 hover:text-blue-500 jusity-start pr-0"
-                >
-                  <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-                  Back
-                </NavLink>
-              </div>
-              <form onSubmit={handleUpdateClick} className="w-full">
-                <h2 className="text-md font-bold">Order ID</h2>
-                <p className="mb-4">{orderId}</p>
-                <Input
-                  className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  name="description"
-                  placeholder="Description"
-                  value={description}
-                  onChange={handleInputChange}
+      <div className="fixed z-10 inset-0 bg-opacity-70 backdrop-filter backdrop-blur-lg">
+        <div className="flex items-center justify-center min-h-screen mx-4 md:mx-0 p-10">
+          <div className="fixed inset-0"></div>
+          <Modal.Content className="max-w-2xl mx-auto bg-[#060f25] opacity-80 text-gray-200 rounded-lg p-8 inline-block">
+            <div className="flex jusitify-center mb-4">
+              <NavLink to="/admin" onClick={handleCancelClick}>
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  className="text-blue-200 hover:text-blue-500"
                 />
-
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-800 text-white p-2 rounded-lg px-4 mb-0"
-                >
-                  Update
-                </Button>
-              </form>
+              </NavLink>
             </div>
+            <form onSubmit={handleUpdateClick} className="w-full h-full">
+              <h2 className="text-3xl text-start mb-4 text-gray-200">
+                Order ID
+              </h2>
+              <p className="mb-4">{orderId}</p>
+              <h4 className="text-start mb-4 text-gray-500">
+                In order to adjust information for chosen Order, please insert
+                new information under Comment and/or update the Order Status
+                under Status and press Save
+              </h4>
+              <label className="block font-bold mt-4 mb-2 text-gray-200">
+                Order Information
+              </label>
+              <input
+                className="bg-[#060f25] appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                name="order information"
+                placeholder="Order Information"
+                value={description}
+                onChange={(event) =>
+                  handleInputChange(event, {
+                    name: "orderInformation",
+                    value: event.target.value,
+                  })
+                }
+              />
+              <label className="block font-bold mt-4 mb-2 text-gray-200">
+                Order Status
+              </label>
+              <select
+                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
+                value={indicationBulb}
+                placeholder="Order Status"
+                onChange={(event) => setIndicationBulb(event.target.value)}
+                id="indicationBulb"
+              >
+                <option value="OPEN">OPEN</option>
+                <option value="ONGOING">ONGOING</option>
+                <option value="FINISHED">FINISHED</option>
+              </select>
+              <Button
+                type="submit"
+                className="w-full mt-4 text-gray-200 text-center border border-blue-500 p-2 hover:bg-blue-500 rounded-lg px-4  hover:text-gray-700"
+              >
+                Update
+              </Button>
+            </form>
           </Modal.Content>
         </div>
       </div>

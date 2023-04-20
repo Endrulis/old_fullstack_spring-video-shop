@@ -63,10 +63,10 @@ function EditUserForm({ userId }) {
     }
     if (
       !password ||
-      (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_\-!?])(?=\S+$).*$/.test(
+      !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_\-!?])(?=\S+$).*$/.test(
         password
       ) ||
-        password.length < 8)
+      password.length < 8
     ) {
       validationErrors.password =
         "Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no whitespace";
@@ -100,12 +100,12 @@ function EditUserForm({ userId }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex justify-center items-center bg-cover bg-no-repeat">
+    <div className="min-h-screen flex justify-center items-center bg-cover bg-no-repeat">
       <div
         className="absolute w-full h-full bg-cover bg-no-repeat"
         style={{ backgroundImage: `url(${Camera14})` }}
       ></div>
-      <div className="max-w-md w-full bg-gray-700 shadow-md rounded-lg py-8 px-8 z-10">
+      <div className="max-w-md w-full bg-[#060f25] shadow-md rounded-lg py-8 px-8 z-10">
         <div className="flex-wrap justify-start mb-4 ">
           <NavLink to="/admin" className="text-blue-200 hover:text-blue-500">
             <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
@@ -124,7 +124,7 @@ function EditUserForm({ userId }) {
               Full name
             </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               id="full-name"
               type="text"
               placeholder="Full name"
@@ -143,7 +143,7 @@ function EditUserForm({ userId }) {
               Email address
             </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Email address"
@@ -164,7 +164,7 @@ function EditUserForm({ userId }) {
             </label>
             <div className="relative">
               <select
-                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
                 id="role"
@@ -194,7 +194,7 @@ function EditUserForm({ userId }) {
               Temporary password for user
             </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"

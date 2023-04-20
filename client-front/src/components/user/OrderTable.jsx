@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import { WiMoonAltWaxingCrescent5 } from "react-icons/wi";
 
 function OrderTable({ orders }) {
   const handleClick = () => {
@@ -26,12 +27,32 @@ function OrderTable({ orders }) {
         hour: "2-digit",
         minute: "2-digit",
       });
-
       return {
         ...order,
         createdAt,
       };
     });
+
+    const renderIndicationBulb = (order) => {
+      if (order.indicationBulb === "OPEN") {
+        return (
+          <WiMoonAltWaxingCrescent5 className="text-gray-200" title="NEW" />
+        );
+      } else if (order.indicationBulb === "ONGOING") {
+        return (
+          <WiMoonAltWaxingCrescent5
+            className="text-amber-500"
+            title="IN PROCESS"
+          />
+        );
+      } else if (order.indicationBulb === "FINISHED") {
+        return (
+          <WiMoonAltWaxingCrescent5 className="text-lime-500" title="DONE" />
+        );
+      } else {
+        return null;
+      }
+    };
 
     orderList.sort((a, b) => {
       const dateA = new Date(a.createdAt);
@@ -45,13 +66,14 @@ function OrderTable({ orders }) {
         </Table.Cell>
         <Table.Cell>{order.createdAt}</Table.Cell>
         <Table.Cell>{order.description}</Table.Cell>
+        <Table.Cell>{renderIndicationBulb(order)}</Table.Cell>
       </Table.Row>
     ));
   }
 
   return (
     <>
-      <div className="justify-center text-gray-200 bg-gray-700">
+      <div className="justify-center text-gray-200">
         <h1 className="md:text-3xl sm:text-xl font-bold lg:mb-6">
           Your orders
         </h1>
@@ -77,6 +99,9 @@ function OrderTable({ orders }) {
                 <Table.HeaderCell className="text-left">Date</Table.HeaderCell>
                 <Table.HeaderCell className="text-left">
                   Description
+                </Table.HeaderCell>
+                <Table.HeaderCell className="text-left">
+                  Status
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>

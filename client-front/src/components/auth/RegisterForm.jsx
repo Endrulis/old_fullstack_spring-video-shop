@@ -100,16 +100,18 @@ export default function RegisterForm() {
       className="min-h-screen flex justify-center items-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${Camera15})` }}
     >
-      <div className="max-w-md w-full bg-gray-700 shadow-md rounded-lg py-8 px-8 z-10 mx-4 md:mx-0">
+      <div className="max-w-md w-full bg-[#060f25] shadow-md rounded-lg py-8 px-8 z-10 mx-4 md:mx-0">
         <div className="flex-wrap justify-start mb-8 ">
           <NavLink to="/" className="text-blue-200 hover:text-blue-500">
             <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-            Back
           </NavLink>
         </div>
-        <h2 className="text-3xl text-center mb-4 text-gray-200">
-          Create your account
-        </h2>
+        <h1 className="text-3xl text-start mb-4 text-gray-200">
+          Create a Moon <br></br> Account
+        </h1>
+        <h4 className="text-start mb-4 text-gray-500">
+          We are excited to see you here!
+        </h4>
         <form
           onSubmit={(event) =>
             handleSubmit(
@@ -121,14 +123,8 @@ export default function RegisterForm() {
           }
         >
           <div className="mb-4">
-            <label
-              className="block bg-gray-700 font-bold mb-2 text-gray-200"
-              htmlFor="fullname"
-            >
-              Full name
-            </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               name="fullName"
               placeholder="Full name"
@@ -140,14 +136,8 @@ export default function RegisterForm() {
             )}
           </div>
           <div className="mb-4">
-            <label
-              className="block bg-gray-700 font-bold mb-2 text-gray-200"
-              htmlFor="email"
-            >
-              Email address
-            </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               name="email"
               placeholder="Email address"
@@ -160,14 +150,8 @@ export default function RegisterForm() {
             )}
           </div>
           <div className="mb-4">
-            <label
-              className="block bg-gray-700 font-bold mb-2 text-gray-200"
-              htmlFor="password"
-            >
-              Password
-            </label>
             <input
-              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               type="password"
               name="password"
               placeholder="Password"
@@ -188,7 +172,7 @@ export default function RegisterForm() {
           {isLoggedIn && <Navigate to="/" />}
         </form>
         <p className="text-center text-gray-200 mt-4">
-          Already have an account?{" "}
+          Already have a Moon account?{" "}
           <NavLink to="/login" className="text-blue-200  hover:text-blue-500">
             Log In
           </NavLink>

@@ -83,24 +83,20 @@ export default function LoginForm() {
         className="min-h-screen flex justify-center items-center bg-cover bg-no-repeat"
         style={{ backgroundImage: `url(${Camera15})` }}
       >
-        <div className="max-w-md w-full bg-gray-700 shadow-md rounded-lg py-8 px-8 z-10 mx-4 md:mx-0">
+        <div className="max-w-md w-full bg-[#060f25] shadow-md rounded-lg py-8 px-8 mx-4 md:mx-0">
           <div className="flex-wrap justify-start mb-4">
             <NavLink to="/" className="text-blue-200 hover:text-blue-500">
               <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-              Back
             </NavLink>
           </div>
-          <h1 className="text-3xl text-center mb-4 text-gray-200">
-            Login to your Moon account
+          <h1 className="text-3xl text-start mb-4 text-gray-200">
+            Welcome<br></br> Back
           </h1>
+          <h4 className="text-start mb-4 text-gray-500">
+            Sign In to your Moon account
+          </h4>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block bg-gray-700 font-bold mb-2 text-gray-200"
-              >
-                Email address
-              </label>
               <input
                 type="email"
                 name="email"
@@ -109,19 +105,13 @@ export default function LoginForm() {
                 onChange={handleUsernameChange}
                 autoComplete="username"
                 placeholder="Email address"
-                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               />
               {formErrors.email && (
                 <p className="text-red-400">{formErrors.email}</p>
               )}
             </div>
             <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block bg-gray-700 text-gray-200 font-bold mb-2"
-              >
-                Password
-              </label>
               <input
                 type="password"
                 name="password"
@@ -130,7 +120,7 @@ export default function LoginForm() {
                 onChange={handlePasswordChange}
                 placeholder="Password"
                 autoComplete="current-password"
-                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="text-gray-200 text-sm appearance-none border rounded w-full py-2 px-3 bg-[#060f25] leading-tight focus:outline-none focus:shadow-outline"
               />
               {formErrors.password && (
                 <p className="text-red-400">{formErrors.password}</p>
@@ -140,13 +130,13 @@ export default function LoginForm() {
               type="submit"
               className="w-full text-gray-200 text-center border border-blue-500 p-2 hover:bg-blue-500 rounded-lg px-4  hover:text-gray-700"
             >
-              Login
+              Sign In
             </button>
           </form>
           <p className="text-center text-gray-200 mt-4">
-            Don't have an account?{" "}
+            New to Moon?{" "}
             <NavLink to="/signup" className="text-blue-200 hover:text-blue-500">
-              Sign up
+              Sign Up
             </NavLink>
           </p>
           {isError && (

@@ -8,6 +8,6 @@ public record UserWithoutPasswordDto(Long id, String email, String fullName, Str
 
 
 
-    public record OrderDto(String id, String description, ZonedDateTime createdAt) {
+    public record OrderDto(String id,String indicationBulb, String description, ZonedDateTime createdAt) {
     }
 }

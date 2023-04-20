@@ -16,6 +16,7 @@ const AdminPage = () => {
   const [userUsernameSearch, setUserUsernameSearch] = useState("");
   const [isUsersLoading, setIsUsersLoading] = useState(false);
   const [isOrdersLoading, setIsOrdersLoading] = useState(false);
+  const [indicationBulb, setIndicationBulb] = useState("OPEN");
 
   useEffect(() => {
     handleGetUsers();
@@ -114,12 +115,13 @@ const AdminPage = () => {
       return;
     }
 
-    const order = { description: trimmedOrderDescription };
+    const order = { indicationBulb, description: trimmedOrderDescription };
     orderApi
       .createOrder(user, order)
       .then(() => {
         handleGetOrders();
         setOrderDescription("");
+        setIndicationBulb("");
       })
       .catch((error) => {
         handleLogError(error);
@@ -172,6 +174,8 @@ const AdminPage = () => {
         isOrdersLoading={isOrdersLoading}
         orders={orders}
         orderDescription={orderDescription}
+        indicationBulb={indicationBulb}
+        setIndicationBulb={setIndicationBulb}
         orderTextSearch={orderTextSearch}
         handleCreateOrder={handleCreateOrder}
         handleUpdateOrder={handleUpdateOrder}
